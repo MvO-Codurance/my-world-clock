@@ -1,6 +1,6 @@
 ﻿const renderClocks = () => {
     let index = 0;
-    fetch("https://localhost:7103/worldclocks")
+    fetch("http://localhost:7071/api/worldclocks")
         .then(response => response.json())
         .then(clocks => {
             const clockData = clocks.map((clock) => {

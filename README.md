@@ -7,9 +7,25 @@ My world clock, allowing customised clocks in different timezones.
 - `MyWorldClock` uses [NodaTime](https://nodatime.org/) to:
   - implement a `ClockService` that exposes different properties/methods to allow the caller to make the correct use of the different date/time/timezone types
   - implement a `WorldClockService` that generates the time of day in different timezones
-- `NodaTimeTestDrive.Tests` contains unit tests for the above
-- `NodaTimeTestDrive.WebApi` exposes parts of the services above to allow their use via REST endpoints and uses the NodaTime serialisation packages
-- `NodaTimeTestDrive.Web` uses the web api to render SVG clocks, powered by the `WorldClockService`
+- `MyWorldClock.Tests` contains unit tests for the above
+- `MyWorldClock.Functions` exposes parts of the services above as Azure Functions to allow their use via REST endpoints and uses the NodaTime serialisation packages
+- `MyWorldClock.Web` uses the web api to render SVG clocks, powered by the `WorldClockService`
+
+## Sample `local.settings.json` for `MyWorldClock.Functions` Project
+
+```json
+{
+    "IsEncrypted": false,
+    "Values": {
+        "AzureWebJobsStorage": "UseDevelopmentStorage=true",
+        "FUNCTIONS_WORKER_RUNTIME": "dotnet-isolated"
+    },
+    "Host": {
+        "LocalHttpPort": 7071,
+        "CORS": "*"
+    }
+}
+```
 
 ## Running the web app
 - Open a prompt in the root of the repo
@@ -29,7 +45,7 @@ dotnet run --project ./MyWorldClock.Web/MyWorldClock.Web.csproj --launch-profile
 
 ## To Do
 - [ ] Deployment
-  - [ ] Change web api project to use Azure Functions
+  - [x] Change web api project to use Azure Functions
   - [ ] Change web project to be an Azure Static Web App
   - [ ] Deploy to Azure using Terraform 
 - [ ] Security (using AzureAD)
