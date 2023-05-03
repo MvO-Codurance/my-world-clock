@@ -46,7 +46,7 @@ dotnet run --project ./MyWorldClock.Web/MyWorldClock.Web.csproj --launch-profile
 ## To Do
 - [ ] Deployment
   - [x] Change web api project to use Azure Functions
-  - [ ] Change web project to be an Azure Static Web App
+  - [ ] Change web project to be an ASP.NET Core web app hosting Angular SPA
   - [ ] Deploy to Azure using Terraform 
 - [ ] Security (using AzureAD)
   - [ ] Sign-up via Google
