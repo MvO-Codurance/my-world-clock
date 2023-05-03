@@ -1,20 +1,5 @@
 <p *ngIf="!clocks?.length"><em>Loading...</em></p>
 
-<table class='table table-striped' aria-labelledby="tableLabel" *ngIf="clocks.length">
-  <thead>
-    <tr>
-      <th>instant</th>
-      <th>localDateTime</th>
-      <th>timezone</th>
-      <th>zonedDateTime</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let clock of clocks">
-      <td>{{ clock.instant }}</td>
-      <td>{{ clock.localDateTime }}</td>
-      <td>{{ clock.timezone }}</td>
-      <td>{{ clock.zonedDateTime }}</td>
-    </tr>
-  </tbody>
-</table>
+<div *ngIf="clocks.length">
+  <app-clock *ngFor="let clock of clocks" [clock]="clock"></app-clock>
+</div>

@@ -28,25 +28,25 @@ My world clock, allowing customised clocks in different timezones.
 ```
 
 ## Running the web app
-- Open a prompt in the root of the repo
-- Run the web api project
+- Open a prompt in the `MyWorldClock.Functions` folder
+- Run the Functions app project
 ```
-dotnet run --project ./MyWorldClock.WebApi/MyWorldClock.WebApi.csproj --launch-profile https
+func start
 ```
-- (you can view the OpenApi page at https://localhost:7103/swagger/index.html)
+- The available endpoints and listed in the terminal output and sit under https://localhost:7103/api/
 
 
-- Open another prompt in the root of the repo
-- Run the web project
+- Open another prompt in the `MyWorldClock.Web` folder
+- Serve the Angular project
 ```
-dotnet run --project ./MyWorldClock.Web/MyWorldClock.Web.csproj --launch-profile https
+ng serve --open
 ```
-- Open your browser to https://localhost:7049/
+- Open your browser to https://localhost:4200/
 
 ## To Do
 - [ ] Deployment
   - [x] Change web api project to use Azure Functions
-  - [ ] Change web project to be an ASP.NET Core web app hosting Angular SPA
+  - [x] Change web project to be a plain Angular SPA
   - [ ] Deploy to Azure using Terraform 
 - [ ] Security (using AzureAD)
   - [ ] Sign-up via Google

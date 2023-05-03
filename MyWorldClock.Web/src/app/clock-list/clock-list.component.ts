@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { environment } from '../../environments/environment';
+import {Component} from '@angular/core';
+import {HttpClient} from '@angular/common/http';
+import {environment} from '../../environments/environment';
+import {ClockData} from "../models/clock.data";
 
 @Component({
   selector: 'app-clock-list',
@@ -18,9 +19,3 @@ export class ClockListComponent {
   }
 }
 
-interface ClockData {
-  instant: Date;
-  localDateTime: Date;
-  timezone: string;
-  zonedDateTime: Date;
-}
