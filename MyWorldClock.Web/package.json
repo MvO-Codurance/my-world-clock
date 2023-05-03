@@ -10,7 +10,8 @@
     "build": "ng build",
     "build:ssr": "ng run MyWorldClock.Web:server:dev",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "serve": "ng serve --open"
   },
   "private": true,
   "dependencies": {

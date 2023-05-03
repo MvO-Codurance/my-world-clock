@@ -6,8 +6,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyWorldClock.Tests", "MyWor
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyWorldClock.Functions", "MyWorldClock.Functions\MyWorldClock.Functions.csproj", "{1DC9C02C-D9CB-49AC-8DAB-CB76E2B93973}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyWorldClock.Web", "MyWorldClock.Web\MyWorldClock.Web.csproj", "{13711509-0DA3-48BB-B898-FFC5DF3254BB}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -26,9 +24,5 @@ Global
 		{1DC9C02C-D9CB-49AC-8DAB-CB76E2B93973}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1DC9C02C-D9CB-49AC-8DAB-CB76E2B93973}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1DC9C02C-D9CB-49AC-8DAB-CB76E2B93973}.Release|Any CPU.Build.0 = Release|Any CPU
-		{13711509-0DA3-48BB-B898-FFC5DF3254BB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{13711509-0DA3-48BB-B898-FFC5DF3254BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{13711509-0DA3-48BB-B898-FFC5DF3254BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{13711509-0DA3-48BB-B898-FFC5DF3254BB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
