@@ -1,9 +1,15 @@
 import { TestBed } from '@angular/core/testing'
-import {ClockService, GET_TIMEZONE_LIST_URL, GET_WORLD_CLOCK_LIST_URL} from './clock.service'
+import {
+  ClockService,
+  GET_TIMEZONE_LIST_FOR_DISPLAY_URL,
+  GET_TIMEZONE_LIST_URL,
+  GET_WORLD_CLOCK_LIST_URL
+} from './clock.service'
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing'
 import { ClockData } from './models/clock.data'
 import DoneCallback = jest.DoneCallback
 import { environment } from '../environments/environment'
+import { TimezoneForDisplay } from "./models/timezoneForDisplay";
 
 const GET_WORLD_CLOCK_LIST_RESPONSE_EMPTY: ClockData[] = []
 
@@ -144,9 +150,39 @@ describe('ClockService', () => {
         .expectOne(environment.apiBaseUrl + GET_TIMEZONE_LIST_URL)
       expect(testRequest.request.method).toBe('GET')
 
-      let expectedTimezones = new Array<string>(596)
+      let expectedTimezones = new Array<string>(expectedCount)
       expectedTimezones[0] = 'Africa/Abidjan'
       expectedTimezones[expectedCount - 1] = 'Zulu'
+
+      testRequest.flush(expectedTimezones)
+    })
+  })
+
+  describe('getTimezoneListForDisplay', () => {
+
+    it('should return array of timezones', (done: DoneCallback) => {
+      let expectedCount = 139
+
+      service.getTimezoneListForDisplay().subscribe((result: TimezoneForDisplay[]) => {
+        expect(result.length).toEqual(expectedCount)
+        expect(result[0].id).toEqual('Etc/GMT+12')
+        expect(result[expectedCount - 1].id).toEqual('Pacific/Kiritimati')
+        done()
+      })
+
+      const testRequest = httpTestingController
+        .expectOne(environment.apiBaseUrl + GET_TIMEZONE_LIST_FOR_DISPLAY_URL)
+      expect(testRequest.request.method).toBe('GET')
+
+      let expectedTimezones = new Array<TimezoneForDisplay>(expectedCount)
+      expectedTimezones[0] = {
+        id: 'Etc/GMT+12',
+        name: ''
+      }
+      expectedTimezones[expectedCount - 1] = {
+        id: 'Pacific/Kiritimati',
+        name: ''
+      }
 
       testRequest.flush(expectedTimezones)
     })
