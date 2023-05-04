@@ -75,8 +75,7 @@
               "browserTarget": "MyWorldClock.Web:build:production"
             },
             "development": {
-              "browserTarget": "MyWorldClock.Web:build:development",
-              "proxyConfig": "proxy.conf.js"
+              "browserTarget": "MyWorldClock.Web:build:development"
             }
           },
           "defaultConfiguration": "development"
