@@ -8,7 +8,10 @@ import { AppComponent } from './app.component'
 import { NavMenuComponent } from './nav-menu/nav-menu.component'
 import { HomeComponent } from './home/home.component'
 import { ClockListComponent } from './clock-list/clock-list.component'
-import { ClockComponent } from './clock/clock.component'
+import { ClockComponent } from './clock/clock.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
+import {MatFormFieldModule} from "@angular/material/form-field";
+import {MatSelectModule} from "@angular/material/select";
 
 @NgModule({
   declarations: [
@@ -20,15 +23,18 @@ import { ClockComponent } from './clock/clock.component'
   ],
   imports: [
     BrowserModule.withServerTransition({
-      appId: 'ng-cli-universal' 
+      appId: 'ng-cli-universal'
     }),
     HttpClientModule,
     FormsModule,
     RouterModule.forRoot([
       {
-        path: '', component: HomeComponent, pathMatch: 'full' 
+        path: '', component: HomeComponent, pathMatch: 'full'
       }
-    ])
+    ]),
+    BrowserAnimationsModule,
+    MatFormFieldModule,
+    MatSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent]

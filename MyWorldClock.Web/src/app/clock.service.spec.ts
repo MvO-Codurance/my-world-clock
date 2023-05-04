@@ -1,5 +1,5 @@
 import { TestBed } from '@angular/core/testing'
-import { ClockService, GET_WORLD_CLOCK_LIST_URL } from './clock.service'
+import {ClockService, GET_TIMEZONE_LIST_URL, GET_WORLD_CLOCK_LIST_URL} from './clock.service'
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing'
 import { ClockData } from './models/clock.data'
 import DoneCallback = jest.DoneCallback
@@ -125,6 +125,30 @@ describe('ClockService', () => {
       expect(testRequest.request.method).toBe('GET')
 
       testRequest.flush(GET_WORLD_CLOCK_LIST_3_CLOCKS)
+    })
+  })
+
+  describe('getTimezoneList', () => {
+
+    it('should return array of timezones', (done: DoneCallback) => {
+      let expectedCount = 596
+
+      service.getTimezoneList().subscribe((result: string[]) => {
+        expect(result.length).toEqual(expectedCount)
+        expect(result[0]).toEqual('Africa/Abidjan')
+        expect(result[expectedCount - 1]).toEqual('Zulu')
+        done()
+      })
+
+      const testRequest = httpTestingController
+        .expectOne(environment.apiBaseUrl + GET_TIMEZONE_LIST_URL)
+      expect(testRequest.request.method).toBe('GET')
+
+      let expectedTimezones = new Array<string>(596)
+      expectedTimezones[0] = 'Africa/Abidjan'
+      expectedTimezones[expectedCount - 1] = 'Zulu'
+
+      testRequest.flush(expectedTimezones)
     })
   })
 })

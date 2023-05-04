@@ -1,1 +1,10 @@
 <app-clock-list></app-clock-list>
+
+<mat-form-field appearance="fill">
+  <mat-label>All Timezones</mat-label>
+  <mat-select>
+    <mat-option *ngFor="let timezone of timezones" [value]="timezone">
+      {{timezone}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
