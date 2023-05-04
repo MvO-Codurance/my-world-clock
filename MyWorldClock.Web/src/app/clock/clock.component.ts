@@ -41,12 +41,12 @@ export class ClockComponent implements AfterViewInit {
 
   ngAfterViewInit() {
     this.initClock();
-    this.interval = setInterval(() => this.updateClock(), 1000);
+    this.interval = window.setInterval(() => this.updateClock(), 1000);
   }
 
   ngOnDestroy() {
     if (this.interval){
-      clearInterval(this.interval);
+      window.clearInterval(this.interval);
     }
   }
 
