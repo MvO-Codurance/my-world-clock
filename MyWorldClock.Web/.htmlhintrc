@@ -1,0 +1,15 @@
+{
+  "style-disabled": true,
+  "script-disabled": true,
+  "attr-value-not-empty": false,
+  "attr-no-duplication": true,
+  "attr-whitespace": false,
+  "attr-no-unnecessary-whitespace": true,
+  "tag-pair": true,
+  "src-not-empty": true,
+  "id-unique": true,
+  "inline-script-disabled": true,
+  "inline-style-disabled": true,
+  "space-tab-mixed-disabled": "space2",
+  "spec-char-escape": true
+}
