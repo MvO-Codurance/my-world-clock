@@ -15,12 +15,21 @@
     "importHelpers": true,
     "target": "es2022",
     "module": "es2020",
+    "useDefineForClassFields": false,
+    "esModuleInterop": true,
     "lib": [
       "es2018",
-      "dom"
+      "dom",
+      "dom.iterable"
     ],
-    "useDefineForClassFields": false,
-    "esModuleInterop": true
+    "types": [
+      "jest",
+      "@types/testing-library__jest-dom"
+    ],
+    "typeRoots": [
+      "node_modules/@types",
+      "./src/core/types"
+    ]
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,
