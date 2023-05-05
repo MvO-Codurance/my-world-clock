@@ -18,7 +18,8 @@ var host = new HostBuilder()
         services
             .AddSingleton<IClock>(_ => SystemClock.Instance)
             .AddScoped<IClockService, ClockService>()
-            .AddScoped<IWorldClockService, WorldClockService>();
+            .AddScoped<IWorldClockService, WorldClockService>()
+            .AddScoped<ILanguageService, LanguageService>();
     })
     .Build();
 

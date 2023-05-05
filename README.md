@@ -47,6 +47,12 @@ ng serve --open
 - [x] Refactoring
   - [x] Change web api project to use Azure Functions
   - [x] Change web project to be a plain Angular SPA
+- [ ] Language Support
+  - [ ] Display a list of language codes to choose from
+  - [ ] Default the chosen language to the browsers' current language
+  - [ ] Upon changing the language:
+    - [ ] Change the language of the timezone dropdown lists
+    - [ ] Change the language of the displayed clocks
 - [ ] Deployment
   - [ ] Deploy to Azure using Terraform
 - [ ] Security (using AzureAD)
