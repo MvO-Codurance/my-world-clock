@@ -44,10 +44,11 @@ ng serve --open
 - Open your browser to https://localhost:4200/
 
 ## To Do
-- [ ] Deployment
+- [x] Refactoring
   - [x] Change web api project to use Azure Functions
   - [x] Change web project to be a plain Angular SPA
-  - [ ] Deploy to Azure using Terraform 
+- [ ] Deployment
+  - [ ] Deploy to Azure using Terraform
 - [ ] Security (using AzureAD)
   - [ ] Sign-up via Google
   - [ ] Login via web site
