@@ -49,7 +49,7 @@ ng serve --open
   - [x] Change web project to be a plain Angular SPA
 - [ ] Language Support
   - [x] Display a list of language codes to choose from
-  - [ ] Default the chosen language to the browsers' current language
+  - [x] Default the chosen language to the browsers' current language
   - [ ] Upon changing the language:
     - [ ] Change the language of the timezone dropdown lists
     - [ ] Change the language of the displayed clocks

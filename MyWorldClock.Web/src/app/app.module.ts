@@ -10,8 +10,9 @@ import { HomeComponent } from './home/home.component'
 import { ClockListComponent } from './clock-list/clock-list.component'
 import { ClockComponent } from './clock/clock.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
-import {MatFormFieldModule} from "@angular/material/form-field";
-import {MatSelectModule} from "@angular/material/select";
+import { MatFormFieldModule } from "@angular/material/form-field";
+import { MatSelectModule } from "@angular/material/select";
+import { User } from "./models/User";
 
 @NgModule({
   declarations: [
@@ -36,7 +37,11 @@ import {MatSelectModule} from "@angular/material/select";
     MatFormFieldModule,
     MatSelectModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: User, useClass: User
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

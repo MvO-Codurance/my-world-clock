@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core'
 import { ClockService } from "../clock.service";
 import { TimezoneForDisplay } from "../models/timezoneForDisplay";
 import { Language } from "../models/language";
+import { User } from "../models/User";
 
 @Component({
   selector: 'app-home',
@@ -12,7 +13,7 @@ export class HomeComponent implements OnInit {
   public timezonesForDisplay: TimezoneForDisplay[] = []
   public languages: Language[] = []
 
-  constructor(private service: ClockService) { }
+  constructor(private service: ClockService, public user: User) { }
 
   ngOnInit() {
 
