@@ -51,7 +51,7 @@ ng serve --open
   - [x] Display a list of language codes to choose from
   - [x] Default the language to the browsers' current language
   - [ ] Upon changing the language:
-    - [ ] Change the language of the timezone dropdown lists
+    - [X] Change the language of the timezone dropdown lists
     - [ ] Change the language of the displayed clocks
 - [x] Default the timezone dropdowns to the browsers' current timezone 
 - [ ] Deployment

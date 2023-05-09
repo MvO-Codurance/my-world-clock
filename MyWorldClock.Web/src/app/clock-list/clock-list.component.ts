@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core'
-import { ClockData } from '../models/clock.data'
+import { ClockData } from '../models/clock-data'
 import { ClockService } from '../clock.service'
 
 @Component({

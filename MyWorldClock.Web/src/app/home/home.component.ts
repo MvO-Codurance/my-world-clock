@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core'
 import { ClockService } from "../clock.service";
-import { TimezoneForDisplay } from "../models/timezoneForDisplay";
+import { TimezoneForDisplay } from "../models/timezone-for-display";
 import { Language } from "../models/language";
 import { User } from "../models/User";
 
@@ -23,17 +23,25 @@ export class HomeComponent implements OnInit {
         error: (error: unknown) => console.error(error)
       })
 
-    this.service.getTimezoneListForDisplay()
-      .subscribe({
-        next: result=> this.timezonesForDisplay = result,
-        error: (error: unknown) => console.error(error)
-      })
+    this.getTimezonesForDisplay(this.user.selectedLanguage);
 
     this.service.getLanguages()
       .subscribe({
         next: result=> this.languages = result,
         error: (error: unknown) => console.error(error)
       })
+  }
+
+  getTimezonesForDisplay(language: string) {
+    this.service.getTimezoneListForDisplay(language)
+      .subscribe({
+        next: result=> this.timezonesForDisplay = result,
+        error: (error: unknown) => console.error(error)
+      })
+  }
+
+  onLanguageChange(language: string){
+    this.getTimezonesForDisplay(language)
   }
 
 }

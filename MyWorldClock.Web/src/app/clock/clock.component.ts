@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, ElementRef, Input, OnDestroy, ViewChild } from '@angular/core'
-import { ClockData } from '../models/clock.data'
+import { ClockData } from '../models/clock-data'
 import { v4 as uuid } from 'uuid'
 
 @Component({

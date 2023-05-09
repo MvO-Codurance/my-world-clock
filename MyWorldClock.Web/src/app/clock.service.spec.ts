@@ -164,7 +164,7 @@ describe('ClockService', () => {
     it('should return array of timezones', (done: DoneCallback) => {
       let expectedCount = 139
 
-      service.getTimezoneListForDisplay().subscribe((result: TimezoneForDisplay[]) => {
+      service.getTimezoneListForDisplay("en-GB").subscribe((result: TimezoneForDisplay[]) => {
         expect(result.length).toEqual(expectedCount)
         expect(result[0].id).toEqual('Etc/GMT+12')
         expect(result[expectedCount - 1].id).toEqual('Pacific/Kiritimati')
@@ -172,7 +172,7 @@ describe('ClockService', () => {
       })
 
       const testRequest = httpTestingController
-        .expectOne(environment.apiBaseUrl + GET_TIMEZONE_LIST_FOR_DISPLAY_URL)
+        .expectOne(environment.apiBaseUrl + GET_TIMEZONE_LIST_FOR_DISPLAY_URL + "en-GB")
       expect(testRequest.request.method).toBe('GET')
 
       let expectedTimezones = new Array<TimezoneForDisplay>(expectedCount)
