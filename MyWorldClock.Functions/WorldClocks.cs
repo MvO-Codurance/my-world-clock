@@ -13,9 +13,9 @@ public class WorldClocks
         _worldClockService = worldClockService;
     }
     
-    [Function("worldclocks")]
+    [Function(nameof(GetClocks))]
     public async Task<HttpResponseData> GetClocks(
-        [HttpTrigger(AuthorizationLevel.Function, "get")] 
+        [HttpTrigger(AuthorizationLevel.Function, "get", Route = "worldclocks")] 
         HttpRequestData request,
         FunctionContext executionContext)
     {

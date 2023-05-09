@@ -13,9 +13,9 @@ public class Timezones
         _clockService = clockService;
     }
     
-    [Function("timezones/all")]
+    [Function(nameof(GetAllTimezones))]
     public async Task<HttpResponseData> GetAllTimezones(
-        [HttpTrigger(AuthorizationLevel.Function, "get")] 
+        [HttpTrigger(AuthorizationLevel.Function, "get", Route = "timezones/all")] 
         HttpRequestData request,
         FunctionContext executionContext)
     {
@@ -25,14 +25,16 @@ public class Timezones
         return response;
     }
     
-    [Function("timezones/for-display")]
+    [Function(nameof(GetTimezonesForDisplay))]
     public async Task<HttpResponseData> GetTimezonesForDisplay(
-        [HttpTrigger(AuthorizationLevel.Function, "get")] 
+        [HttpTrigger(AuthorizationLevel.Function, "get", Route = "timezones/for-display/{language?}")] 
         HttpRequestData request,
+        string? language,
         FunctionContext executionContext)
     {
         var response = request.CreateResponse(HttpStatusCode.OK);
-        await response.WriteAsJsonAsync(_clockService.GetTimezonesForDisplay());
+        var timezones = string.IsNullOrWhiteSpace(language) ? _clockService.GetTimezonesForDisplay() : _clockService.GetTimezonesForDisplay(language);
+        await response.WriteAsJsonAsync(timezones);
 
         return response;
     }
