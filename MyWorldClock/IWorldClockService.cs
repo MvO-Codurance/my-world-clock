@@ -2,5 +2,5 @@ namespace MyWorldClock;
 
 public interface IWorldClockService
 {
-    IEnumerable<WorldClock> GetClocks(params string[] timezoneIds);
+    IEnumerable<WorldClock> GetClocks(string language, string[] timezoneIds);
 }

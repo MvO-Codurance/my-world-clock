@@ -1,5 +1,6 @@
 using NodaTime;
 using NodaTime.Extensions;
+using TimeZoneNames;
 
 namespace MyWorldClock;
 
@@ -12,7 +13,9 @@ public class WorldClockService : IWorldClockService
         _clock = clock;
     }
     
-    public IEnumerable<WorldClock> GetClocks(params string[] timezoneIds)
+    public IEnumerable<WorldClock> GetClocks(
+        string language,
+        string[] timezoneIds)
     {
         List<WorldClock> worldClocks = new(timezoneIds.Length);
 
@@ -28,7 +31,7 @@ public class WorldClockService : IWorldClockService
 
             worldClocks.Add(
                 new WorldClock(
-                    Timezone: timezone,
+                    Timezone: TZNames.GetDisplayNameForTimeZone(timezone.Id, language) ?? timezone.Id,
                     Instant: _clock.GetCurrentInstant(),
                     ZonedDateTime: zonedClock.GetCurrentZonedDateTime(),
                     LocalDateTime: zonedClock.GetCurrentLocalDateTime())
