@@ -6,10 +6,10 @@ import {
   GET_WORLD_CLOCK_LIST_URL
 } from './clock.service'
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing'
-import { ClockData } from './models/clock.data'
+import { ClockData } from './models/clock-data'
 import DoneCallback = jest.DoneCallback
 import { environment } from '../environments/environment'
-import { TimezoneForDisplay } from "./models/timezoneForDisplay";
+import { TimezoneForDisplay } from "./models/timezone-for-display";
 import { Language } from "./models/language";
 
 const GET_WORLD_CLOCK_LIST_RESPONSE_EMPTY: ClockData[] = []
@@ -67,13 +67,13 @@ describe('ClockService', () => {
   describe('getWorldClockList', () => {
 
     it('given no clocks should return empty array', (done: DoneCallback) => {
-      service.getWorldClockList().subscribe((result: ClockData[]) => {
+      service.getWorldClockList("en-GB").subscribe((result: ClockData[]) => {
         expect(result).toEqual([])
         done()
       })
 
       const testRequest = httpTestingController
-        .expectOne(environment.apiBaseUrl + GET_WORLD_CLOCK_LIST_URL)
+        .expectOne(environment.apiBaseUrl + GET_WORLD_CLOCK_LIST_URL + "en-GB")
 
       testRequest.flush(GET_WORLD_CLOCK_LIST_RESPONSE_EMPTY)
     })
@@ -88,13 +88,13 @@ describe('ClockService', () => {
         }
       ]
 
-      service.getWorldClockList().subscribe((result: ClockData[]) => {
+      service.getWorldClockList("en-GB").subscribe((result: ClockData[]) => {
         expect(result).toEqual(expected)
         done()
       })
 
       const testRequest = httpTestingController
-        .expectOne(environment.apiBaseUrl + GET_WORLD_CLOCK_LIST_URL)
+        .expectOne(environment.apiBaseUrl + GET_WORLD_CLOCK_LIST_URL + "en-GB")
       expect(testRequest.request.method).toBe('GET')
 
       testRequest.flush(GET_WORLD_CLOCK_LIST_1_CLOCK)
@@ -122,13 +122,13 @@ describe('ClockService', () => {
         }
       ]
 
-      service.getWorldClockList().subscribe((result: ClockData[]) => {
+      service.getWorldClockList("en-GB").subscribe((result: ClockData[]) => {
         expect(result).toEqual(expected)
         done()
       })
 
       const testRequest = httpTestingController
-        .expectOne(environment.apiBaseUrl + GET_WORLD_CLOCK_LIST_URL)
+        .expectOne(environment.apiBaseUrl + GET_WORLD_CLOCK_LIST_URL + "en-GB")
       expect(testRequest.request.method).toBe('GET')
 
       testRequest.flush(GET_WORLD_CLOCK_LIST_3_CLOCKS)

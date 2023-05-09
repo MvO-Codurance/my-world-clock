@@ -2,4 +2,6 @@
   display: inline-block;
   width: 33%;
   margin-bottom: 20px;
+  text-align: center;
+  vertical-align: top;
 }

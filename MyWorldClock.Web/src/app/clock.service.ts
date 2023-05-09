@@ -6,7 +6,7 @@ import { environment}  from '../environments/environment'
 import { TimezoneForDisplay } from "./models/timezone-for-display";
 import { Language } from "./models/language";
 
-export const GET_WORLD_CLOCK_LIST_URL = 'worldclocks'
+export const GET_WORLD_CLOCK_LIST_URL = 'worldclocks/'
 export const GET_TIMEZONE_LIST_URL = 'timezones/all'
 export const GET_TIMEZONE_LIST_FOR_DISPLAY_URL = 'timezones/for-display/'
 export const GET_LANGUAGES_URL = 'languages'
@@ -18,8 +18,8 @@ export class ClockService {
 
   constructor(private httpClient: HttpClient) { }
 
-  getWorldClockList(): Observable<ClockData[]> {
-    return this.httpClient.get<ClockData[]>(environment.apiBaseUrl + GET_WORLD_CLOCK_LIST_URL)
+  getWorldClockList(language: string): Observable<ClockData[]> {
+    return this.httpClient.get<ClockData[]>(environment.apiBaseUrl + GET_WORLD_CLOCK_LIST_URL + language)
   }
 
   getTimezoneList(): Observable<string[]> {
