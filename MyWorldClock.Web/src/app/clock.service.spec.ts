@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing'
 import {
-  ClockService,
+  ClockService, GET_LANGUAGES_URL,
   GET_TIMEZONE_LIST_FOR_DISPLAY_URL,
   GET_TIMEZONE_LIST_URL,
   GET_WORLD_CLOCK_LIST_URL
@@ -10,6 +10,7 @@ import { ClockData } from './models/clock.data'
 import DoneCallback = jest.DoneCallback
 import { environment } from '../environments/environment'
 import { TimezoneForDisplay } from "./models/timezoneForDisplay";
+import { Language } from "./models/language";
 
 const GET_WORLD_CLOCK_LIST_RESPONSE_EMPTY: ClockData[] = []
 
@@ -185,6 +186,36 @@ describe('ClockService', () => {
       }
 
       testRequest.flush(expectedTimezones)
+    })
+  })
+
+  describe('getLanguages', () => {
+
+    it('should return array of languages', (done: DoneCallback) => {
+      let expectedCount = 139
+
+      service.getLanguages().subscribe((result: Language[]) => {
+        expect(result.length).toEqual(expectedCount)
+        expect(result[0].code).toEqual('ar-SA')
+        expect(result[expectedCount - 1].code).toEqual('vi-VN')
+        done()
+      })
+
+      const testRequest = httpTestingController
+        .expectOne(environment.apiBaseUrl + GET_LANGUAGES_URL)
+      expect(testRequest.request.method).toBe('GET')
+
+      let expectedLanguages = new Array<Language>(expectedCount)
+      expectedLanguages[0] = {
+        code: 'ar-SA',
+        displayName: ''
+      }
+      expectedLanguages[expectedCount - 1] = {
+        code: 'vi-VN',
+        displayName: ''
+      }
+
+      testRequest.flush(expectedLanguages)
     })
   })
 })

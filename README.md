@@ -48,7 +48,7 @@ ng serve --open
   - [x] Change web api project to use Azure Functions
   - [x] Change web project to be a plain Angular SPA
 - [ ] Language Support
-  - [ ] Display a list of language codes to choose from
+  - [x] Display a list of language codes to choose from
   - [ ] Default the chosen language to the browsers' current language
   - [ ] Upon changing the language:
     - [ ] Change the language of the timezone dropdown lists

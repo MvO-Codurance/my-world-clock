@@ -1,7 +1,18 @@
+<p>
+  <mat-form-field appearance="fill" style="width: 50%">
+    <mat-label>Language</mat-label>
+    <mat-select>
+      <mat-option *ngFor="let language of languages" [value]="language.code">
+        {{language.displayName}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+</p>
+
 <app-clock-list></app-clock-list>
 
 <p>
-  <mat-form-field appearance="fill" style="width: 500px">
+  <mat-form-field appearance="fill" style="width: 50%">
     <mat-label>All Timezones</mat-label>
     <mat-select>
       <mat-option *ngFor="let timezone of timezones" [value]="timezone">
@@ -12,7 +23,7 @@
 </p>
 
 <p>
-  <mat-form-field appearance="fill" style="width: 500px">
+  <mat-form-field appearance="fill" style="width: 50%">
     <mat-label>Timezones For Display</mat-label>
     <mat-select>
       <mat-option *ngFor="let timezone of timezonesForDisplay" [value]="timezone.id">

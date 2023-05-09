@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core'
 import { ClockService } from "../clock.service";
 import { TimezoneForDisplay } from "../models/timezoneForDisplay";
+import { Language } from "../models/language";
 
 @Component({
   selector: 'app-home',
@@ -9,6 +10,7 @@ import { TimezoneForDisplay } from "../models/timezoneForDisplay";
 export class HomeComponent implements OnInit {
   public timezones: string[] = []
   public timezonesForDisplay: TimezoneForDisplay[] = []
+  public languages: Language[] = []
 
   constructor(private service: ClockService) { }
 
@@ -23,6 +25,12 @@ export class HomeComponent implements OnInit {
     this.service.getTimezoneListForDisplay()
       .subscribe({
         next: result=> this.timezonesForDisplay = result,
+        error: (error: unknown) => console.error(error)
+      })
+
+    this.service.getLanguages()
+      .subscribe({
+        next: result=> this.languages = result,
         error: (error: unknown) => console.error(error)
       })
   }
