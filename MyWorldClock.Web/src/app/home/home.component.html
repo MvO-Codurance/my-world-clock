@@ -14,7 +14,7 @@
 <p>
   <mat-form-field appearance="fill" style="width: 50%">
     <mat-label>All Timezones</mat-label>
-    <mat-select>
+    <mat-select [(value)]="user.selectedTimezone">
       <mat-option *ngFor="let timezone of timezones" [value]="timezone">
         {{timezone}}
       </mat-option>
@@ -25,7 +25,7 @@
 <p>
   <mat-form-field appearance="fill" style="width: 50%">
     <mat-label>Timezones For Display</mat-label>
-    <mat-select>
+    <mat-select [(value)]="user.selectedTimezone">
       <mat-option *ngFor="let timezone of timezonesForDisplay" [value]="timezone.id">
         {{timezone.name}}
       </mat-option>
