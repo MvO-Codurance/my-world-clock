@@ -11,7 +11,72 @@ My world clock, allowing customised clocks in different timezones.
 - `MyWorldClock.Functions` exposes parts of the services above as Azure Functions to allow their use via REST endpoints and uses the NodaTime serialisation packages
 - `MyWorldClock.Web` uses the web api to render SVG clocks, powered by the `WorldClockService`
 
-## Sample `local.settings.json` for `MyWorldClock.Functions` Project
+## To deploy the application
+
+- Login into the Azure Portal
+- Create a new "Static Web App"
+- Choose/create a resource group
+- Enter a name
+- Choose a region
+- Under Deployment Details:
+  - Choose `GitHub` deployment
+  - Select the details for this repo
+- Under Build Details:
+  - `Build Presets` = `Angular`
+  - `App location` = `/MyWorldClock.Web`
+  - `Api location` = `/MyWorldClock.Functions`
+  - `Output location` = `dist`
+
+Create the static web app and wait for the deployment to complete. 
+You can view the progress via the links on the Overview section of the static web app.
+
+<!--
+## Pre-requisites
+Ensure you have the following:
+* The [Terraform CLI](/tutorials/terraform/install-cli?in=terraform/aws-get-started) (1.4.6+) installed.
+* [An Azure account](https://azure.microsoft.com/).
+* The [Azure CLI (2.48.0+)](https://learn.microsoft.com/en-us/cli/azure/install-azure-cli) installed.
+
+## To deploy the application
+
+Open a **Powershell** prompt at the project folder, i.e. the folder than contains the `main.tf` file.
+
+Log in to your Azure account:
+```
+az login
+```
+Use the browser that is opened to authenticate to your Azure account. Your `~/.azure` profile will be updated with the required authentication tokens.
+Close the browser.
+
+Build/publish the application:
+```
+./publish.ps1
+```
+
+Initialise TerraForm:
+```
+terraform init
+```
+
+View the deployment plan:
+```
+terraform plan
+```
+
+Deploy the application:
+```
+terraform apply
+```
+When prompted, enter `yes` to confirm the deployment.
+
+Once complete, copy/paste the `function_app_url` output value from the console into your browser.
+-->
+
+## To run locally
+
+### Functions app
+
+Create the following `local.settings.json` file in the `MyWorldClock.Functions` folder
 
 ```json
 {
@@ -27,7 +92,6 @@ My world clock, allowing customised clocks in different timezones.
 }
 ```
 
-## Running the web app
 - Open a prompt in the `MyWorldClock.Functions` folder
 - Run the Functions app project
 ```
@@ -35,6 +99,7 @@ func start
 ```
 - The available endpoints and listed in the terminal output and sit under https://localhost:7103/api/
 
+### Angular app
 
 - Open another prompt in the `MyWorldClock.Web` folder
 - Serve the Angular project
