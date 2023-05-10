@@ -12,7 +12,7 @@ import { ClockComponent } from './clock/clock.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatSelectModule } from "@angular/material/select";
-import { User } from "./models/User";
+import { User } from "./models/user";
 
 @NgModule({
   declarations: [

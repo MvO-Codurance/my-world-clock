@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core'
 import { ClockService } from "../clock.service";
 import { TimezoneForDisplay } from "../models/timezone-for-display";
 import { Language } from "../models/language";
-import { User } from "../models/User";
+import { User } from "../models/user";
 
 @Component({
   selector: 'app-home',
