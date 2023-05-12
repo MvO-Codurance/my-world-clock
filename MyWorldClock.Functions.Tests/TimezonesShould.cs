@@ -67,7 +67,7 @@ public class TimezonesShould
         [Frozen] Mock<IClockService> clockService,
         Timezones sut)
     {
-        clockService.Setup(x => x.GetTimezonesForDisplay()).Returns(expectedTimezones);
+        clockService.Setup(x => x.GetTimezonesForDisplay(It.IsAny<string>())).Returns(expectedTimezones);
         var request = MockHelpers.CreateHttpRequestData();
         
         var response = await sut.GetTimezonesForDisplay(
