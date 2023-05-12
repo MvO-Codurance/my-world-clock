@@ -13,7 +13,7 @@ public class Languages
         _languageService = languageService;
     }
     
-    [Function("languages")]
+    [Function(nameof(GetLanguages))]
     public async Task<HttpResponseData> GetLanguages(
         [HttpTrigger(AuthorizationLevel.Function, "get")] 
         HttpRequestData request,
