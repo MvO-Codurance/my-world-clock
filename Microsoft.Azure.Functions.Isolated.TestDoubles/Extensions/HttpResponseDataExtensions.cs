@@ -38,6 +38,24 @@ namespace Microsoft.Azure.Functions.Isolated.TestDoubles.Extensions
 
             return default;
         }
+        
+        public static T? ReadHttpResponseDataAsJson<T>(
+            this HttpResponseData response,
+            JsonSerializerOptions jsonSerializerOptions)
+        {
+            var stream = response.Body;
+            if (stream is MemoryStream)
+            {
+                if (stream.Position != 0)
+                {
+                    stream.Position = 0;
+                }
+
+                return JsonSerializer.Deserialize<T>(stream, jsonSerializerOptions);
+            }
+
+            return default;
+        }
 
         public static bool IsHttpResponseBodyEmpty(this HttpResponseData response)
         {

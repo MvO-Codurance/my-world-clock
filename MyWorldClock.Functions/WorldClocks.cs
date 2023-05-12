@@ -22,16 +22,17 @@ public class WorldClocks
         FunctionContext executionContext)
     {
         var response = request.CreateResponse(HttpStatusCode.OK);
+
         await response.WriteAsJsonAsync(_worldClockService.GetClocks(
             string.IsNullOrWhiteSpace(language) ? CultureInfo.CurrentUICulture.Name : language,
-            new []
+            new[]
             {
                 "America/Los_Angeles",
                 "America/New_York",
                 "Europe/London",
                 "Europe/Paris",
                 "Europe/Rome",
-                "Asia/Tokyo"    
+                "Asia/Tokyo"
             }));
 
         return response;

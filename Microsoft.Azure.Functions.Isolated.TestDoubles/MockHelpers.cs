@@ -7,12 +7,14 @@ using Microsoft.Extensions.DependencyInjection;
 namespace Microsoft.Azure.Functions.Isolated.TestDoubles;
 public static class MockHelpers
 {
-    public static HttpRequestData CreateHttpRequestData(string? payload = null,
+    public static HttpRequestData CreateHttpRequestData(
+        string? payload = null,
         string? token = null,
-        string method = "GET")
+        string method = "GET",
+        ObjectSerializer? objectSerializer = null)
     {
         var input = payload ?? string.Empty;
-        var functionContext = CreateContext(new JsonObjectSerializer());
+        var functionContext = CreateContext(objectSerializer ?? new JsonObjectSerializer());
         var request = new MockHttpRequestData(functionContext, method: method,
             body: new MemoryStream(Encoding.UTF8.GetBytes(input)));
         request.Headers.Add("Content-Type", "application/json");

@@ -1,6 +1,7 @@
 ﻿using AutoFixture;
 using AutoFixture.AutoMoq;
 using AutoFixture.Xunit2;
+using MicroElements.AutoFixture.NodaTime;
 
 namespace MyWorldClock.Functions.Tests;
 
@@ -23,7 +24,7 @@ public class InlineAutoMoqDataAttribute : InlineAutoDataAttribute
             : base(() =>
             {
                 var fixture = new Fixture();
-                fixture.Customize(new CompositeCustomization(new AutoMoqCustomization()));
+                fixture.Customize(new CompositeCustomization(new NodaTimeCustomization(), new AutoMoqCustomization()));
                 return fixture;
             })
         {
