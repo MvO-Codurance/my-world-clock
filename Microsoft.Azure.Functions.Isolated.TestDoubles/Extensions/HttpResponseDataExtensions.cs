@@ -38,5 +38,10 @@ namespace Microsoft.Azure.Functions.Isolated.TestDoubles.Extensions
 
             return default;
         }
+
+        public static bool IsHttpResponseBodyEmpty(this HttpResponseData response)
+        {
+            return response.Body.IsEmpty();
+        }
     }
 }

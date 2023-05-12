@@ -19,7 +19,7 @@ public class TimezonesShould
         
         var response = await sut.GetAllTimezones(request, request.FunctionContext);
 
-        response.Should().NotBeNull();
+        response.IsHttpResponseBodyEmpty().Should().BeFalse();
         clockService.Verify(x => x.GetAllTimezones(), Times.Once);
     }
     
@@ -35,7 +35,7 @@ public class TimezonesShould
         
         var response = await sut.GetAllTimezones(request, request.FunctionContext);
 
-        response.Should().NotBeNull();
+        response.IsHttpResponseBodyEmpty().Should().BeFalse();
         var actualTimezones = response.ReadHttpResponseDataAsJson<string[]>();
         actualTimezones.Should().BeEquivalentTo(expectedTimezones);
     }
@@ -55,7 +55,7 @@ public class TimezonesShould
             language: null, 
             request.FunctionContext);
 
-        response.Should().NotBeNull();
+        response.IsHttpResponseBodyEmpty().Should().BeFalse();
         clockService.Verify(x => x.GetTimezonesForDisplay(), Times.Once);
     }
     
@@ -67,7 +67,7 @@ public class TimezonesShould
         [Frozen] Mock<IClockService> clockService,
         Timezones sut)
     {
-        clockService.Setup(x => x.GetTimezonesForDisplay(It.IsAny<string>())).Returns(expectedTimezones);
+        clockService.Setup(x => x.GetTimezonesForDisplay(language)).Returns(expectedTimezones);
         var request = MockHelpers.CreateHttpRequestData();
         
         var response = await sut.GetTimezonesForDisplay(
@@ -75,7 +75,7 @@ public class TimezonesShould
             language: language, 
             request.FunctionContext);
 
-        response.Should().NotBeNull();
+        response.IsHttpResponseBodyEmpty().Should().BeFalse();
         clockService.Verify(x => x.GetTimezonesForDisplay(language), Times.Once);
     }
     
@@ -97,7 +97,7 @@ public class TimezonesShould
             language: language, 
             request.FunctionContext);
 
-        response.Should().NotBeNull();
+        response.IsHttpResponseBodyEmpty().Should().BeFalse();
         var actualTimezones = response.ReadHttpResponseDataAsJson<TimezoneForDisplay[]>();
         actualTimezones.Should().BeEquivalentTo(expectedTimezones);
     }
